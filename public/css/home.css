@@ -1,0 +1,153 @@
+.sliders{
+    position: relative;
+    width: 100vw;
+    height: 60vh;
+    margin-top: 57px;
+}
+.navs{
+    position: absolute;
+    bottom: 45px;
+    right: 45px;
+    list-style: none;
+    display: flex;
+    gap: 6px;
+}
+.navs li{
+    padding: 7px 10px;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
+.navs li:hover{
+    background-color: black;
+    color: white;
+}
+.slider{
+    position: absolute;
+    top: 0;
+    left: -130%;
+    width: 100%;
+    height: 100%;
+    display: none;
+    /* visibility: hidden; */
+    align-items: center;
+    transition: display .1s linear, left .3s linear;
+}
+.slider.active{
+    display: flex !important;
+    left: 0;
+}
+.slider > img{
+    position: absolute;
+    top: 0; left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.slider div{
+    line-height: 2;
+    margin-left: 5rem;
+    z-index: 10;
+    color: var(--black);
+}
+.slider div p {
+    transition: unset;
+    animation: fadeIn .25s linear .2s backwards;
+}
+.slider div h1{
+    font-weight: bolder;
+    font-size: 5vw;line-height: 1;
+    transition: unset;
+    animation: fadeIn .25s linear .4s backwards;
+}
+.fadeIn{
+    animation: fadeIn .25s linear .6s backwards;
+}
+.btn{
+    position: relative;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    transition: unset;
+    color: var(--black);
+    border: 1px solid var(--black);
+    border-radius: 5px;
+    background-color: transparent;
+    width: fit-content;
+    overflow: hidden;
+    padding: 0.3rem 2rem;
+    z-index: 20;
+}
+.btn::before{
+    content: ' ';
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    top: 0;left: 0;
+    transform: translateX(-100%);
+    transition: all .3s ease-in;
+    z-index: -10;
+}
+.btn:hover::before{
+    transform: translateX(0);
+}
+.btn:hover{
+    color: white;
+}
+section{
+    width: 80%;
+    margin: 20px auto;
+}
+.cards{
+    display: grid;
+    grid-template-columns:  repeat(auto-fit, minmax(14rem, 1fr));
+    gap: 10px;
+}
+.card{
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.card img{
+    width: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0; right: 0;
+}
+.card:hover img{
+    transform: scale(1.1);
+}
+.card div{
+    position: absolute;
+    top: 50%; right: 10px;
+    transform: translateY(-50%);
+    margin-left: auto;
+    line-height: 1.5;
+}
+.card div p{
+    font-size: 12px;
+}
+@keyframes fadeIn {
+    0%{
+        transform: translateY(3rem);
+        opacity: 0;
+    }
+}
+@media screen and (max-width: 750px){
+    .sliders{
+        height: 60vh;
+    }
+    .slider div{
+        line-height: 2;
+        margin-left: 1rem;
+        z-index: 10;
+    }
+    .slider div h1{
+        font-weight: bolder;
+        font-size: 7vw;
+    }
+}

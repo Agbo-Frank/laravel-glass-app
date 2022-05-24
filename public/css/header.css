@@ -1,0 +1,203 @@
+header{
+    position: fixed;
+    top: 0;
+    right: 0;left: 0;
+    background-color: var(--white-100);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 9%;
+    width: 100%;
+    box-shadow: 0 3px 9px rgba(0 , 0, 0, 0.2);
+    z-index: 100;
+    height: 60px !important;
+}
+header > div:first-child{
+    margin: auto 5px;
+    width: 10%;
+    height: 100%;
+}
+header > div:first-child > img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+header > div:nth-child(2){
+    display: flex;
+    justify-content: flex-end;
+    width: 55%;
+    gap: 20px;
+}
+header > div:nth-child(2) > ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 20px;
+    height: 60px;
+    z-index: 90;
+}
+
+header > div:nth-child(2) > ul > li  a,
+header > div:nth-child(2) > ul > li  form,
+header > div:nth-child(2) > ul > li  p{
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    cursor: pointer;
+    color: var(--black);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 0 10px;
+}
+header > div:nth-child(2) div,
+.logo{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+    gap: 15px;
+}
+.dropdown > .dropdownMenu{
+    margin: 0 !important;
+    padding: 0 !important;
+    position: absolute;
+    top: 100%;
+    display: none;
+    height: 0;
+    width: 150px;
+    background-color: var(--white-100);
+}
+.dropdown > .dropdownMenu li{
+    display: block;
+    padding: 15px 10px;
+    width: 100% !important;
+}
+.dropdown > .dropdownMenu li a{
+    display: block;
+    cursor: pointer;
+}
+.dropdown > .dropdownMenu li:hover,
+header > div:last-child > ul > li > a:hover,
+header > div:last-child > ul > li  p:hover{
+    background-color: rgba(153, 153, 153, 0.1);
+}
+.dropdown:hover > .dropdownMenu,
+.dropdownMenu:hover{
+    display: block;
+    height: fit-content;
+}
+header > div > .icons{
+    display: flex;
+    justify-content:flex-end;
+    gap: 9px;
+    color: black;
+}
+header > div > .icons > i:first-child{
+    display: none
+}
+header > div > .icons .cartIcon.active{
+    /* display: block; */
+    position: relative;
+}
+header > div > .icons .cartIcon.active::before{
+    content: attr(data-num) " ";
+    position: absolute;
+    top: -7px;right: -9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: crimson;
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    box-sizing: content-box;
+    padding: 2px;
+    border-radius: 50%;
+    width: 11px;
+    height: 11px
+}
+header > div > .icons  i{
+    color: black;
+    font-size: 20px;
+    text-decoration: none;
+}
+header > div > .icons > i:hover,
+header > div > .icons > a:hover{
+    color: var(--pink)
+}
+@media screen and (max-width: 750px) {
+    header{
+        padding: 0 3%;
+        width: 100%;
+        height: 50px;
+    }
+    header > div:nth-child(2) > ul{
+        padding: 0 !important;
+        display: none;
+        position: absolute;
+        top: -100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        width: 100%;
+        height: fit-content;
+        background-color: white;
+        gap: 0;
+        box-shadow: 1px 5px 6px rgba(0, 0, 0, 0.6);
+        z-index: 80;
+    }
+    .overlayer{
+        backdrop-filter: blur(4px);
+        display: none;
+        position: fixed;
+        top: 0; left: 0;
+        background-color: rgba(0, 0, 0, 0.25);
+        width: 100%;
+        height: 130vh;
+        z-index: 70;
+    }
+    .overlayer.active{
+        display: block;
+    }
+    header > div:nth-child(2) > ul.active{
+        display: flex;
+        top: 100%;
+    }
+    header > div:nth-child(2) > ul > li >  a,
+    header > div:nth-child(2) > ul > li  form,
+    header > div:nth-child(2) > ul > li  p{
+        justify-content: flex-start;
+        align-items: center;
+        padding: 11px 10px;
+        border-bottom: 1px solid black;
+        height: 100%;
+    }
+    header > div:nth-child(2) > ul > li:last-child > a,
+    header > div:nth-child(2) > ul > li:last-child  form,
+    header > div:nth-child(2) > ul > li:last-child  p{
+        border: none
+    }
+    .dropdown > .dropdownMenu{
+        position: relative;
+        height: 0;
+        width: 100%;
+    }
+    .dropdown:hover > .dropdownMenu{
+        height: fit-content
+    }
+    .dropdown > .dropdownMenu li{
+        display: block;
+        padding: 8px 10px;
+        border-top: 1px solid black;
+        width: 100%;
+    }
+    .dropdown > .dropdownMenu li:first-child{
+        border: none;
+    }
+    header > div > .icons > i:first-child{
+        display: block;
+
+    }
+}
