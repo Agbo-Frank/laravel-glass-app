@@ -28,6 +28,7 @@
     <div class='product-page'>
         <!-- <ProductSlide arrimage={product.image}/> -->
         <div class='text'>
+            <?php $user_id = Auth::check() ?  Auth::user()->id : null ?>
             <div>
                 <h2><?php echo e($product['name']); ?></h2>
                 <div>
@@ -46,10 +47,16 @@
                 <p><?php echo e($product['description']); ?></p>
             </div>
             <div>
-                <div>$<?php echo e($product['price']); ?></div>
+                <div>₦<?php echo e($product['price']); ?></div>
                 <div class='buttons'>
                     <button>Buy Now</button>
-                    <button>Add To Cart</button>
+                    <form method="POST" action="/cart">
+                        <?php echo csrf_field(); ?>
+                        <input type="hidden" name="product_id" value="<?php echo e($product['id']); ?>"/>
+                        <input type="hidden" name="user_id" value="<?php echo e($user_id); ?>"/>
+                        <input type="hidden" name="quantity" value="1"/>
+                        <button type="submit">Add To Cart</button>
+                    </form>
                 </div>
             </div>
         </div>

@@ -23,10 +23,18 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Cart $cart, $id)
+    public function index()
     {
-        $carts = Cart::all() ;
-        return $carts;
+        $id = auth()->user()->id;
+        $carts = Cart::with('product.images')->where('user_id', '=', $id)->get();
+        
+        $carts_with_product = array();
+
+        foreach($carts as $cart_){
+            $cart_['product'] = $cart_->product;
+            array_push($carts_with_product, $cart_);
+        }
+        return view('cart', ["carts" => $carts_with_product]);
     }
 
     /**
@@ -45,24 +53,6 @@ class CartController extends Controller
  
         $cart->save();
         return redirect("/product")->with('status', 'Product uploaded!');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  App\Models\Product $product
-     * @return \Illuminate\Http\Response
-     */
-    public function show($cart)
-    {
-        $carts = Cart::where('user_id', '=', $cart)->get();
-        $carts_with_product = array();
-
-        foreach($carts as $cart_){
-            $cart_['product'] = $cart_->product;
-            array_push($carts_with_product, $cart_);
-        }
-        return view('cart', ["carts" => $carts_with_product]);
     }
 
     /**

@@ -14,7 +14,7 @@
                     onclick="event.preventDefault(); this.closest('form').submit();"></i>
                 </form>
                 <div>
-                    
+                    <img src="{{ $cart['product']['images'][0]['path'] }}"/>
                     <div>
                         <strong>{{ $cart["product"]["name"] }}</strong>
                         <div class="quantity-control">

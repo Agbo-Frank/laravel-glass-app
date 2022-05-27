@@ -16,7 +16,7 @@ use App\Http\Controllers\CartController;
 */
 Route::view('/', 'home');
 Route::resource('product', ProductController::class);
-Route::resource('cart', CartController::class)->only(['destroy', 'show', 'store']);
+Route::resource('cart', CartController::class)->only(['destroy', 'index', 'store']);
 Route::view('/about', 'about')->name('about');
 Route::view('/blogs', 'blogs')->name('blogs');
 
